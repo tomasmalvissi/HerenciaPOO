@@ -13,6 +13,7 @@ namespace Formularios
 {
     public partial class FormPersona : Form
     {
+        #region Variables
         private string Nom;
         private long DNI;
         private DateTime FeNac;
@@ -21,10 +22,12 @@ namespace Formularios
         private long LegA;
         private string CarD;
         private long LegD;
+        #endregion
         public FormPersona()
         {
             InitializeComponent();        
         }
+        #region Metodos
         private void CargarPersona() 
         {
             Nom = txtNom.Text;
@@ -50,28 +53,32 @@ namespace Formularios
         {
             CarA = txtCarA.Text;
             LegA = Convert.ToInt64(txtLegA.Text);
-            
-            Alumno alum;
-            alum = new Alumno(Nom, DNI, FeNac, Sex, CarA, LegA);
+
+            Alumno alum = new Alumno(Nom, DNI, FeNac, Sex, CarA, LegA);
         }
         private void CargarDocente()
         {
             CarD = txtCarD.Text;
             LegD = Convert.ToInt64(txtLegD.Text);
-
-            Docente doc;
-            doc = new Docente(Nom, DNI, FeNac, Sex, CarD, LegD);
+            
+            Docente doc = new Docente(Nom, DNI, FeNac, Sex, CarD, LegD);
         }
+        #endregion
+        #region botones
         private void btnPersona_Click(object sender, EventArgs e)
         {
             if (txtNom.Text == "" && txtDNI.Text == "")
             {
-                MessageBox.Show("Complete todos los campos");
+                MessageBox.Show("Complete todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (!rbFem.Checked && !rbMas.Checked && !rbOtro.Checked)
+            {
+                MessageBox.Show("Debe seleccionar una opcion", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                CargarPersona();
                 MessageBox.Show("Datos cargados con exito");
+                CargarPersona();                
                 txtNom.Text = "";
                 txtDNI.Text = "";
             }
@@ -81,12 +88,12 @@ namespace Formularios
         {
             if (txtCarA.Text == "" && txtLegA.Text == "")
             {
-                MessageBox.Show("Complete todos los campos");
+                MessageBox.Show("Complete todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                CargarAlumno();
                 MessageBox.Show("Datos cargados con exito");
+                CargarAlumno();
                 txtCarA.Text = "";
                 txtLegA.Text = "";
             }
@@ -96,15 +103,83 @@ namespace Formularios
         {
             if (txtCarD.Text == "" && txtLegD.Text == "")
             {
-                MessageBox.Show("Complete todos los campos");
+                MessageBox.Show("Complete todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                CargarDocente();
                 MessageBox.Show("Datos cargados con exito");
+                CargarDocente();
                 txtCarD.Text = "";
                 txtLegD.Text = "";
             }
         }
+        #endregion
+        #region validation
+        private void txtNom_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+        private void txtDNI_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && txtDNI.Text.Length != 8)
+            {
+                MessageBox.Show("Solo debe ingresar los 8 números de su DNI", "Advertencia",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtCarA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtLegA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtCarD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten letras", "Advertencia",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtLegD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        #endregion
     }
 }
