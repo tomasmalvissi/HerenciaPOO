@@ -48,6 +48,7 @@ namespace Formularios
             }
             Persona pers;
             pers = new Persona(Nom, DNI, FeNac, Sex);
+            dgv.Rows.Add(pers.Nombre, pers.DNI, pers.FechaNac, pers.Sexo);
         }
         private void CargarAlumno()
         {
@@ -55,6 +56,8 @@ namespace Formularios
             LegA = Convert.ToInt64(txtLegA.Text);
 
             Alumno alum = new Alumno(Nom, DNI, FeNac, Sex, CarA, LegA);
+            dgv.Rows.Add(alum.Nombre, alum.DNI, alum.FechaNac, alum.Sexo, "Alumno", alum.Carrera, alum.Legajo);
+
         }
         private void CargarDocente()
         {
@@ -62,6 +65,29 @@ namespace Formularios
             LegD = Convert.ToInt64(txtLegD.Text);
             
             Docente doc = new Docente(Nom, DNI, FeNac, Sex, CarD, LegD);
+            dgv.Rows.Add(doc.Nombre, doc.DNI, doc.FechaNac, doc.Sexo, "Docente", doc.Carrera, doc.Legajo);
+        }
+        private void Rellenar() 
+        {
+            txtNom.Text = dgv.CurrentRow.Cells[0].Value.ToString();
+            txtDNI.Text = dgv.CurrentRow.Cells[1].Value.ToString();
+            //string fecha = dgv.CurrentRow.Cells[2].Value.ToString();
+            //dtFechaNac.Value = Convert.ToDateTime(fecha);
+            string condicion = dgv.CurrentRow.Cells[4].Value.ToString();
+            if (condicion == "Alumno")
+            {
+                txtCarA.Text = dgv.CurrentRow.Cells[5].Value.ToString();
+                txtLegA.Text = dgv.CurrentRow.Cells[6].Value.ToString();
+                txtCarD.Text = "";
+                txtLegD.Text = "";
+            }
+            else if (condicion == "Docente")
+            {
+                txtCarD.Text = dgv.CurrentRow.Cells[5].Value.ToString();
+                txtLegD.Text = dgv.CurrentRow.Cells[6].Value.ToString();
+                txtCarA.Text = "";
+                txtLegA.Text = "";
+            }
         }
         #endregion
         #region botones
@@ -113,6 +139,22 @@ namespace Formularios
                 txtLegD.Text = "";
             }
         }
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Sex == 'F')
+            {
+                rbFem.Checked = true;
+            }
+            else if (Sex == 'M')
+            {
+                rbMas.Checked = true;
+            }
+            else if (Sex == 'O')
+            {
+                rbOtro.Checked = true;
+            }
+            Rellenar();
+        }
         #endregion
         #region validation
         private void txtNom_KeyPress(object sender, KeyPressEventArgs e)
@@ -134,6 +176,7 @@ namespace Formularios
                 e.Handled = true;
                 return;
             }
+
         }
 
         private void txtCarA_KeyPress(object sender, KeyPressEventArgs e)
@@ -181,5 +224,6 @@ namespace Formularios
         }
 
         #endregion
+
     }
 }

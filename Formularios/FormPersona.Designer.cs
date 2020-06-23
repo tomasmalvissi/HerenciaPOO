@@ -53,6 +53,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ndni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaNac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Condicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Carrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.tbObjetos.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -91,7 +98,7 @@
             this.groupBox1.Controls.Add(this.rbFem);
             this.groupBox1.Location = new System.Drawing.Point(270, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(191, 115);
+            this.groupBox1.Size = new System.Drawing.Size(109, 115);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
@@ -130,7 +137,7 @@
             // 
             // btnPersona
             // 
-            this.btnPersona.Location = new System.Drawing.Point(194, 193);
+            this.btnPersona.Location = new System.Drawing.Point(162, 189);
             this.btnPersona.Name = "btnPersona";
             this.btnPersona.Size = new System.Drawing.Size(115, 23);
             this.btnPersona.TabIndex = 4;
@@ -296,16 +303,63 @@
             // dgv
             // 
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Location = new System.Drawing.Point(21, 262);
+            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nombre,
+            this.Ndni,
+            this.FechaNac,
+            this.Sexo,
+            this.Condicion,
+            this.Carrera,
+            this.Legajo});
+            this.dgv.Location = new System.Drawing.Point(42, 271);
+            this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
-            this.dgv.Size = new System.Drawing.Size(765, 325);
+            this.dgv.RowHeadersVisible = false;
+            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv.Size = new System.Drawing.Size(703, 324);
             this.dgv.TabIndex = 9;
+            this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Ndni
+            // 
+            this.Ndni.HeaderText = "DNI";
+            this.Ndni.Name = "Ndni";
+            // 
+            // FechaNac
+            // 
+            this.FechaNac.HeaderText = "Fecha Nacimiento";
+            this.FechaNac.Name = "FechaNac";
+            // 
+            // Sexo
+            // 
+            this.Sexo.HeaderText = "Sexo";
+            this.Sexo.Name = "Sexo";
+            // 
+            // Condicion
+            // 
+            this.Condicion.HeaderText = "Condicion";
+            this.Condicion.Name = "Condicion";
+            // 
+            // Carrera
+            // 
+            this.Carrera.HeaderText = "Carrera";
+            this.Carrera.Name = "Carrera";
+            // 
+            // Legajo
+            // 
+            this.Legajo.HeaderText = "Legajo";
+            this.Legajo.Name = "Legajo";
             // 
             // FormPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 619);
+            this.ClientSize = new System.Drawing.Size(789, 607);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -358,6 +412,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ndni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaNac;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sexo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Condicion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Carrera;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Legajo;
     }
 }
 
