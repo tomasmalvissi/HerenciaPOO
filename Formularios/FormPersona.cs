@@ -46,9 +46,24 @@ namespace Formularios
             {
                 Sex = 'O';
             }
-            Persona pers;
-            pers = new Persona(Nom, DNI, FeNac, Sex);
-            dgv.Rows.Add(pers.Nombre, pers.DNI, pers.FechaNac, pers.Sexo);
+            if (txtCarA.Text == "" || txtLegA.Text == "" || txtCarD.Text == "" || txtLegD.Text == "")
+            {
+                DialogResult avisopersona = MessageBox.Show("¿Quiere cargar los datos de un Alumno o Docente?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (avisopersona == DialogResult.No)
+                {
+                    Persona pers;
+                    pers = new Persona(Nom, DNI, FeNac, Sex);
+                    dgv.Rows.Add(pers.Nombre, pers.DNI, pers.FechaNac, pers.Sexo);
+                    MessageBox.Show("Datos cargados con exito");
+                    txtNom.Text = "";
+                    txtDNI.Text = "";
+                }
+                else if (avisopersona == DialogResult.Yes)
+                {
+                    Persona pers;
+                    pers = new Persona(Nom, DNI, FeNac, Sex);
+                }
+            }
         }
         private void CargarAlumno()
         {
@@ -71,8 +86,7 @@ namespace Formularios
         {
             txtNom.Text = dgv.CurrentRow.Cells[0].Value.ToString();
             txtDNI.Text = dgv.CurrentRow.Cells[1].Value.ToString();
-            //string fecha = dgv.CurrentRow.Cells[2].Value.ToString();
-            //dtFechaNac.Value = Convert.ToDateTime(fecha);
+            dtFechaNac.Value = Convert.ToDateTime(dgv.CurrentRow.Cells[2].Value.ToString());
             string condicion = dgv.CurrentRow.Cells[4].Value.ToString();
             if (condicion == "Alumno")
             {
@@ -101,12 +115,14 @@ namespace Formularios
             {
                 MessageBox.Show("Debe seleccionar una opcion", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else if (txtDNI.Text.Length != 8)
+            {
+                MessageBox.Show("Debe ingresar los 8 números de su DNI", "Advertencia",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             else
             {
-                MessageBox.Show("Datos cargados con exito");
-                CargarPersona();                
-                txtNom.Text = "";
-                txtDNI.Text = "";
+                CargarPersona();
             }
         }
 
@@ -169,7 +185,7 @@ namespace Formularios
         }
         private void txtDNI_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && txtDNI.Text.Length != 8)
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
             {
                 MessageBox.Show("Solo debe ingresar los 8 números de su DNI", "Advertencia",
                 MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
