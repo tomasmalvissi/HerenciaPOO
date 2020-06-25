@@ -371,6 +371,7 @@
             this.Controls.Add(this.txtDNI);
             this.Controls.Add(this.txtNom);
             this.Name = "FormPersona";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Persona ABM";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
