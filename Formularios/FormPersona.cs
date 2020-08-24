@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Clases;
+using Datos;
 
 namespace Formularios
 {
@@ -53,7 +54,10 @@ namespace Formularios
                 {
                     Persona pers;
                     pers = new Persona(Nom, DNI, FeNac, Sex);
-                    dgv.Rows.Add(pers.Nombre, pers.DNI, pers.FechaNac, pers.Sexo);
+                    DatosPersona dpersona = new DatosPersona();
+                    string accion = "Alta";
+                    dpersona.ABMPer( accion ,pers);
+                    //dgv.Rows.Add(pers.Nombre, pers.DNI, pers.FechaNac, pers.Sexo);
                     MessageBox.Show("Datos cargados con exito");
                     txtNom.Text = "";
                     txtDNI.Text = "";
@@ -71,7 +75,10 @@ namespace Formularios
             LegA = Convert.ToInt64(txtLegA.Text);
 
             Alumno alum = new Alumno(Nom, DNI, FeNac, Sex, CarA, LegA);
-            dgv.Rows.Add(alum.Nombre, alum.DNI, alum.FechaNac, alum.Sexo, "Alumno", alum.Carrera, alum.Legajo);
+            //dgv.Rows.Add(alum.Nombre, alum.DNI, alum.FechaNac, alum.Sexo, "Alumno", alum.Carrera, alum.Legajo);
+            DatosAlumno dalumno = new DatosAlumno();
+            string accion = "Alta";
+            dalumno.ABMAlum(accion, alum);
 
         }
         private void CargarDocente()
@@ -80,29 +87,32 @@ namespace Formularios
             LegD = Convert.ToInt64(txtLegD.Text);
             
             Docente doc = new Docente(Nom, DNI, FeNac, Sex, CarD, LegD);
-            dgv.Rows.Add(doc.Nombre, doc.DNI, doc.FechaNac, doc.Sexo, "Docente", doc.Carrera, doc.Legajo);
+            //dgv.Rows.Add(doc.Nombre, doc.DNI, doc.FechaNac, doc.Sexo, "Docente", doc.Carrera, doc.Legajo);
+            DatosDocente ddocente = new DatosDocente();
+            string accion = "Alta";
+            ddocente.ABMDoc(accion, doc);
         }
-        private void Rellenar() 
-        {
-            txtNom.Text = dgv.CurrentRow.Cells[0].Value.ToString();
-            txtDNI.Text = dgv.CurrentRow.Cells[1].Value.ToString();
-            dtFechaNac.Value = Convert.ToDateTime(dgv.CurrentRow.Cells[2].Value.ToString());
-            string condicion = dgv.CurrentRow.Cells[4].Value.ToString();
-            if (condicion == "Alumno")
-            {
-                txtCarA.Text = dgv.CurrentRow.Cells[5].Value.ToString();
-                txtLegA.Text = dgv.CurrentRow.Cells[6].Value.ToString();
-                txtCarD.Text = "";
-                txtLegD.Text = "";
-            }
-            else if (condicion == "Docente")
-            {
-                txtCarD.Text = dgv.CurrentRow.Cells[5].Value.ToString();
-                txtLegD.Text = dgv.CurrentRow.Cells[6].Value.ToString();
-                txtCarA.Text = "";
-                txtLegA.Text = "";
-            }
-        }
+        //private void Rellenar() 
+        //{
+        //    txtNom.Text = dgv.CurrentRow.Cells[0].Value.ToString();
+        //    txtDNI.Text = dgv.CurrentRow.Cells[1].Value.ToString();
+        //    dtFechaNac.Value = Convert.ToDateTime(dgv.CurrentRow.Cells[2].Value.ToString());
+        //    string condicion = dgv.CurrentRow.Cells[4].Value.ToString();
+        //    if (condicion == "Alumno")
+        //    {
+        //        txtCarA.Text = dgv.CurrentRow.Cells[5].Value.ToString();
+        //        txtLegA.Text = dgv.CurrentRow.Cells[6].Value.ToString();
+        //        txtCarD.Text = "";
+        //        txtLegD.Text = "";
+        //    }
+        //    else if (condicion == "Docente")
+        //    {
+        //        txtCarD.Text = dgv.CurrentRow.Cells[5].Value.ToString();
+        //        txtLegD.Text = dgv.CurrentRow.Cells[6].Value.ToString();
+        //        txtCarA.Text = "";
+        //        txtLegA.Text = "";
+        //    }
+        //}
         #endregion
         #region botones
         private void btnPersona_Click(object sender, EventArgs e)
@@ -169,7 +179,7 @@ namespace Formularios
             {
                 rbOtro.Checked = true;
             }
-            Rellenar();
+            //Rellenar();
         }
         #endregion
         #region validation

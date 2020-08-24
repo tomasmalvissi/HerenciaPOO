@@ -84,6 +84,10 @@
       <Project>{a2d6950a-9f72-43c0-bce6-8abd68decd50}</Project>
       <Name>Clases</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{712DD30E-411C-46D4-A91E-C2FD63070225}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

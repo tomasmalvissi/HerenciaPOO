@@ -7,7 +7,7 @@ using Clases;
 
 namespace Datos
 {
-    class DatosDocente : DatosConexionDB
+    public class DatosDocente : DatosConexionDB
     {
         public int ABMDoc(string accion, Docente objdoc) 
         {
@@ -19,7 +19,52 @@ namespace Datos
                 orden = "insert into Docente values ('" + objdoc.Nombre + ",'" + objdoc.DNI + ",'" + objdoc.FechaNac + ",'" + objdoc.Sexo + ",'" + objdoc.Carrera + ",'" + objdoc.Legajo + "');";
             }
 
+            SqlCommand sqlcmd = new SqlCommand(orden, conexion);
+            try
+            {
+                AbrirConex();
+                resultado = sqlcmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("Error al tratar de moficiar los registros de Docente", e);
+            }
+            finally
+            {
+                CerrarConex();
+                sqlcmd.Dispose();
+            }
             return resultado;
+        }
+
+        public DataSet listadoDocente(string cual)
+        {
+            string orden = string.Empty;
+            if (cual != "Todos") //ver id where
+                orden = "select * from Docente where Id = " + int.Parse(cual) + ";";
+            else
+                orden = "select * from Docente;";
+            SqlCommand sqlcmd = new SqlCommand(orden, conexion);
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter();
+            try
+            {
+                AbrirConex();
+                sqlcmd.ExecuteNonQuery();
+                da.SelectCommand = sqlcmd;
+                da.Fill(ds);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al listar Docentes", e);
+            }
+            finally
+            {
+                CerrarConex();
+                sqlcmd.Dispose();
+            }
+            return ds;
         }
     }
 }
