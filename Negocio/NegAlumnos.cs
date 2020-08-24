@@ -14,5 +14,9 @@ namespace Negocio
         {
             return objdatalu.ABMAlum(accion, objAlum);
         }
+        public DataSet listadoalu(string cual)
+        {
+            return objdatalu.listadoAlumno(cual);
+        }
     }
 }

@@ -88,6 +88,10 @@
       <Project>{712DD30E-411C-46D4-A91E-C2FD63070225}</Project>
       <Name>Datos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{dd0a1dab-57c1-4ae5-9910-48833f311f34}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

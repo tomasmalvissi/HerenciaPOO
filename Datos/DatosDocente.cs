@@ -66,5 +66,9 @@ namespace Datos
             }
             return ds;
         }
+        public void hola()
+        {
+
+        }
     }
 }

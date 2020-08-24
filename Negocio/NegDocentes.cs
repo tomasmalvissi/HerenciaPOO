@@ -13,6 +13,12 @@ namespace Negocio
         public int ABMDoc(string accion, Docente objDoc)
         {
             return objdatdoc.ABMDoc(accion, objDoc);
+            //return objdatdoc.ABMDoc(accion, objDoc);            
+        }
+
+        public DataSet listadodoc(string cual)
+        {
+            return objdatdoc.listadoDocente(cual);
         }
     }
 }

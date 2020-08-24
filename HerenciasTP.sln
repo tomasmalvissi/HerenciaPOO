@@ -4,12 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formularios", "Formularios\Formularios.csproj", "{3962766B-889A-448F-A1AD-BF4474AC2B57}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DD0A1DAB-57C1-4AE5-9910-48833F311F34} = {DD0A1DAB-57C1-4AE5-9910-48833F311F34}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clases", "Clases\Clases.csproj", "{A2D6950A-9F72-43C0-BCE6-8ABD68DECD50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{712DD30E-411C-46D4-A91E-C2FD63070225}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Datos", "Datos\Datos.csproj", "{712DD30E-411C-46D4-A91E-C2FD63070225}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{DD0A1DAB-57C1-4AE5-9910-48833F311F34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Negocio", "Negocio\Negocio.csproj", "{DD0A1DAB-57C1-4AE5-9910-48833F311F34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

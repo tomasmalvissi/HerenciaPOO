@@ -14,5 +14,9 @@ namespace Negocio
         {
             return objdatper.ABMPer(accion, objPer);
         }
+        public DataSet listadoper(string cual)
+        {
+            return objdatper.listadoPersona(cual);
+        }
     }
 }
