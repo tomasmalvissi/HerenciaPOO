@@ -52,11 +52,10 @@ namespace Formularios
                 DialogResult avisopersona = MessageBox.Show("¿Quiere cargar los datos de un Alumno o Docente?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (avisopersona == DialogResult.No)
                 {
-                    Persona pers;
-                    pers = new Persona(Nom, DNI, FeNac, Sex);
-                    DatosPersona dpersona = new DatosPersona();
+                    Persona pers = new Persona(Nom, DNI, FeNac, Sex);
+                    DatosPersona dpersona = new DatosPersona();         
                     string accion = "Alta";
-                    dpersona.ABMPer( accion ,pers);
+                    dpersona.ABMPer(accion, pers);
                     //dgv.Rows.Add(pers.Nombre, pers.DNI, pers.FechaNac, pers.Sexo);
                     MessageBox.Show("Datos cargados con exito");
                     txtNom.Text = "";
@@ -64,8 +63,7 @@ namespace Formularios
                 }
                 else if (avisopersona == DialogResult.Yes)
                 {
-                    Persona pers;
-                    pers = new Persona(Nom, DNI, FeNac, Sex);
+                    Persona pers = new Persona(Nom, DNI, FeNac, Sex);
                 }
             }
         }

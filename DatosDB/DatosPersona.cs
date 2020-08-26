@@ -16,11 +16,12 @@ namespace Datos
 
             if (accion == "Alta")
             {
-                orden = "insert into Persona values ('" + objper.Nombre + ",'" + objper.DNI + ",'" + objper.FechaNac + ",'" + objper.Sexo + "');";
+                orden = "insert into Persona values ('" + objper.Nombre + ",'" + objper.DNI + ",'" + objper.FechaNac + ",'" + objper.Sexo + "');'";
             }
             if (accion == "Modificar") //revisar where
+            {
                 orden = "update Persona set Nombre='" + objper.Nombre + "', DNI='" + objper.DNI + "', FechaNac='" + objper.FechaNac + "', Sexo='" + objper.Sexo + "where Id='" + ";";
-
+            }
             SqlCommand sqlcmd = new SqlCommand(orden,conexion);
             try
             {
