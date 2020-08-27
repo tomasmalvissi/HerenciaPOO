@@ -16,7 +16,13 @@ namespace Datos
 
             if (accion == "Alta")
             {
-                orden = "insert into Persona values ('" + objper.Nombre + ",'" + objper.DNI + ",'" + objper.FechaNac + ",'" + objper.Sexo + "');'";
+                orden = "insert into Persona " +
+                                 "values ("
+                                   + "'" + objper.Nombre + "',"
+                                   + "'" + objper.DNI + "',"
+                                   + "'" + objper.FechaNac + "',"
+                                   + "'" + objper.Sexo + "'"
+                                   + ");";
             }
             if (accion == "Modificar") //revisar where
             {

@@ -16,7 +16,15 @@ namespace Datos
 
             if (accion == "Alta")
             {
-                orden = "insert into Docente values ('" + objdoc.Nombre + ",'" + objdoc.DNI + ",'" + objdoc.FechaNac + ",'" + objdoc.Sexo + ",'" + objdoc.Carrera + ",'" + objdoc.Legajo + "');";
+                orden = "insert into Docente " +
+                                          "values ("
+                                            + "'" + objdoc.Nombre + "',"
+                                            + "'" + objdoc.DNI + "',"
+                                            + "'" + objdoc.FechaNac + "',"
+                                            + "'" + objdoc.Sexo + "',"
+                                            + "'" + objdoc.Carrera + "',"
+                                            + "'" + objdoc.Legajo + "'"
+                                            + ");";
             }
 
             SqlCommand sqlcmd = new SqlCommand(orden, conexion);

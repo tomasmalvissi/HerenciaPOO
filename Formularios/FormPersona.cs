@@ -26,7 +26,7 @@ namespace Formularios
         #endregion
         public FormPersona()
         {
-            InitializeComponent();        
+            InitializeComponent();
         }
         #region Metodos
         private void CargarPersona() 
@@ -53,7 +53,7 @@ namespace Formularios
                 if (avisopersona == DialogResult.No)
                 {
                     Persona pers = new Persona(Nom, DNI, FeNac, Sex);
-                    DatosPersona dpersona = new DatosPersona();         
+                    DatosPersona dpersona = new DatosPersona();
                     string accion = "Alta";
                     dpersona.ABMPer(accion, pers);
                     //dgv.Rows.Add(pers.Nombre, pers.DNI, pers.FechaNac, pers.Sexo);
