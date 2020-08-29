@@ -53,11 +53,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.btnModif = new System.Windows.Forms.Button();
+            this.btnElimin = new System.Windows.Forms.Button();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ndni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaNac = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Condicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Carrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
@@ -310,10 +311,9 @@
             this.Ndni,
             this.FechaNac,
             this.Sexo,
-            this.Condicion,
             this.Carrera,
             this.Legajo});
-            this.dgv.Location = new System.Drawing.Point(42, 271);
+            this.dgv.Location = new System.Drawing.Point(34, 266);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.RowHeadersVisible = false;
@@ -321,6 +321,25 @@
             this.dgv.Size = new System.Drawing.Size(703, 324);
             this.dgv.TabIndex = 9;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
+            // 
+            // btnModif
+            // 
+            this.btnModif.Location = new System.Drawing.Point(354, 237);
+            this.btnModif.Name = "btnModif";
+            this.btnModif.Size = new System.Drawing.Size(75, 23);
+            this.btnModif.TabIndex = 10;
+            this.btnModif.Text = "Modificar";
+            this.btnModif.UseVisualStyleBackColor = true;
+            this.btnModif.Click += new System.EventHandler(this.btnModif_Click);
+            // 
+            // btnElimin
+            // 
+            this.btnElimin.Location = new System.Drawing.Point(458, 237);
+            this.btnElimin.Name = "btnElimin";
+            this.btnElimin.Size = new System.Drawing.Size(75, 23);
+            this.btnElimin.TabIndex = 11;
+            this.btnElimin.Text = "Eliminar";
+            this.btnElimin.UseVisualStyleBackColor = true;
             // 
             // Nombre
             // 
@@ -342,11 +361,6 @@
             this.Sexo.HeaderText = "Sexo";
             this.Sexo.Name = "Sexo";
             // 
-            // Condicion
-            // 
-            this.Condicion.HeaderText = "Condicion";
-            this.Condicion.Name = "Condicion";
-            // 
             // Carrera
             // 
             this.Carrera.HeaderText = "Carrera";
@@ -361,7 +375,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 607);
+            this.ClientSize = new System.Drawing.Size(789, 660);
+            this.Controls.Add(this.btnElimin);
+            this.Controls.Add(this.btnModif);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -415,11 +431,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.Button btnModif;
+        private System.Windows.Forms.Button btnElimin;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ndni;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaNac;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sexo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Condicion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Carrera;
         private System.Windows.Forms.DataGridViewTextBoxColumn Legajo;
     }

@@ -26,6 +26,20 @@ namespace Datos
                                             + "'" + objdoc.Legajo + "'"
                                             + ");";
             }
+            if (accion == "Modificar")
+            {
+                orden = "update Docente set "
+                                   + "Nombre= '" + objdoc.Nombre + "',"
+                                   + "FechaNac= '" + objdoc.FechaNac + "',"
+                                   + "Sexo= '" + objdoc.Sexo + "',"
+                                   + "Legajo= '" + objdoc.Legajo + "',"
+                                   + "Carrera= '" + objdoc.Carrera + "' "
+                                   + "where DNI= " + objdoc.DNI;
+            }
+            if (accion == "Eliminar")
+            {
+                orden = "Delete from Docente where DNI = " + objdoc.DNI;
+            }
 
             SqlCommand sqlcmd = new SqlCommand(orden, conexion);
             try
@@ -73,10 +87,6 @@ namespace Datos
                 sqlcmd.Dispose();
             }
             return ds;
-        }
-        public void hola()
-        {
-
         }
     }
 }

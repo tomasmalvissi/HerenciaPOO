@@ -26,6 +26,20 @@ namespace Datos
                                             + "'" + objalu.Legajo + "'"
                                             + ");";
             }
+            if (accion == "Modificar")
+            {
+                orden = "update Alumno set "
+                                   + "Nombre= '" + objalu.Nombre + "',"
+                                   + "FechaNac= '" + objalu.FechaNac + "',"
+                                   + "Sexo= '" + objalu.Sexo + "',"
+                                   + "Legajo= '" + objalu.Legajo + "',"
+                                   + "Carrera= '" + objalu.Carrera + "'"
+                                   + "where DNI= " + objalu.DNI;
+            }
+            if (accion == "Eliminar")
+            {
+                orden = "Delete from Alumno where DNI = " + objalu.DNI;
+            }
 
             SqlCommand sqlcmd = new SqlCommand(orden, conexion);
             try

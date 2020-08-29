@@ -24,9 +24,17 @@ namespace Datos
                                    + "'" + objper.Sexo + "'"
                                    + ");";
             }
-            if (accion == "Modificar") //revisar where
+            if (accion == "Modificar")
             {
-                orden = "update Persona set Nombre='" + objper.Nombre + "', DNI='" + objper.DNI + "', FechaNac='" + objper.FechaNac + "', Sexo='" + objper.Sexo + "where Id='" + ";";
+                orden = "update Persona set "
+                                   + "Nombre= '" + objper.Nombre + "',"
+                                   + "FechaNac= '" + objper.FechaNac + "',"
+                                   + "Sexo= '" + objper.Sexo + "'"
+                                   + "where DNI= " + objper.DNI;
+            }
+            if (accion == "Eliminar")
+            {
+                orden = "Delete from Persona where DNI = " + objper.DNI;
             }
             SqlCommand sqlcmd = new SqlCommand(orden,conexion);
             try
