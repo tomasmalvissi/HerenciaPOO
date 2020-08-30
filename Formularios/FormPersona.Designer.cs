@@ -329,41 +329,49 @@
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(703, 324);
             this.dgv.TabIndex = 9;
+            this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // Ndni
             // 
             this.Ndni.HeaderText = "DNI";
             this.Ndni.Name = "Ndni";
+            this.Ndni.ReadOnly = true;
             // 
             // FechaNac
             // 
             this.FechaNac.HeaderText = "Fecha Nacimiento";
             this.FechaNac.Name = "FechaNac";
+            this.FechaNac.ReadOnly = true;
             // 
             // Sexo
             // 
             this.Sexo.HeaderText = "Sexo";
             this.Sexo.Name = "Sexo";
+            this.Sexo.ReadOnly = true;
             // 
             // Condicion
             // 
             this.Condicion.HeaderText = "Condicion";
             this.Condicion.Name = "Condicion";
+            this.Condicion.ReadOnly = true;
             // 
             // Carrera
             // 
             this.Carrera.HeaderText = "Carrera";
             this.Carrera.Name = "Carrera";
+            this.Carrera.ReadOnly = true;
             // 
             // Legajo
             // 
             this.Legajo.HeaderText = "Legajo";
             this.Legajo.Name = "Legajo";
+            this.Legajo.ReadOnly = true;
             // 
             // btnModif
             // 

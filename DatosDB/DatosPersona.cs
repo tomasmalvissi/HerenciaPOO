@@ -22,7 +22,7 @@ namespace Datos
                                    + "'" + objper.DNI + "',"
                                    + "'" + objper.FechaNac + "',"
                                    + "'" + objper.Sexo + "',"
-                                   + "' Persona '"
+                                   + "'Persona'"
                                    + ");";
             }
             if (accion == "Modificar")

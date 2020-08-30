@@ -22,7 +22,7 @@ namespace Datos
                                             + "'" + objdoc.DNI + "',"
                                             + "'" + objdoc.FechaNac + "',"
                                             + "'" + objdoc.Sexo + "',"
-                                            + "' Docente ',"
+                                            + "'Docente',"
                                             + "'" + objdoc.Carrera + "',"
                                             + "'" + objdoc.Legajo + "'"
                                             + ");";

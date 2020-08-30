@@ -247,10 +247,6 @@ namespace Formularios
                 txtDNI.Text = "";
             }
         }
-        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Rellenar();
-        }
         private void btnModif_Click(object sender, EventArgs e)
         {
             if (txtNom.Text == "" && txtDNI.Text == "" && txtCarD.Text == "" && txtLegD.Text == "" && txtCarA.Text == "" && txtLegA.Text == "")
@@ -281,21 +277,6 @@ namespace Formularios
             }
         }
 
-        private void rbPers_CheckedChanged(object sender, EventArgs e)
-        {
-            DGVPersona();
-        }
-
-        private void rbAlum_CheckedChanged(object sender, EventArgs e)
-        {
-            DGVAlumno();
-        }
-
-        private void rbDoc_CheckedChanged(object sender, EventArgs e)
-        {
-            DGVDocente();
-        }
-
         private void btnElimin_Click(object sender, EventArgs e)
         {
             if (dgv.CurrentRow.Cells[4].Value.ToString() == "Alumno")
@@ -313,6 +294,24 @@ namespace Formularios
                 string accion = "Eliminar";
                 datper.ABMPer(accion, pers);
             }
+        }
+        private void rbPers_CheckedChanged(object sender, EventArgs e)
+        {
+            DGVPersona();
+        }
+
+        private void rbAlum_CheckedChanged(object sender, EventArgs e)
+        {
+            DGVAlumno();
+        }
+
+        private void rbDoc_CheckedChanged(object sender, EventArgs e)
+        {
+            DGVDocente();
+        }
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Rellenar();
         }
         #endregion
         #region validation
