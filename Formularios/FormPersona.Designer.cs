@@ -53,19 +53,26 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.btnModif = new System.Windows.Forms.Button();
-            this.btnElimin = new System.Windows.Forms.Button();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ndni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaNac = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Condicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Carrera = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Legajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnModif = new System.Windows.Forms.Button();
+            this.btnElimin = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.rbDoc = new System.Windows.Forms.RadioButton();
+            this.rbAlum = new System.Windows.Forms.RadioButton();
+            this.rbPers = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.tbObjetos.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNom
@@ -140,7 +147,7 @@
             // 
             // btnPersona
             // 
-            this.btnPersona.Location = new System.Drawing.Point(162, 189);
+            this.btnPersona.Location = new System.Drawing.Point(270, 189);
             this.btnPersona.Name = "btnPersona";
             this.btnPersona.Size = new System.Drawing.Size(115, 23);
             this.btnPersona.TabIndex = 4;
@@ -311,35 +318,17 @@
             this.Ndni,
             this.FechaNac,
             this.Sexo,
+            this.Condicion,
             this.Carrera,
             this.Legajo});
             this.dgv.Location = new System.Drawing.Point(34, 266);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
             this.dgv.RowHeadersVisible = false;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(703, 324);
             this.dgv.TabIndex = 9;
-            this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
-            // 
-            // btnModif
-            // 
-            this.btnModif.Location = new System.Drawing.Point(354, 237);
-            this.btnModif.Name = "btnModif";
-            this.btnModif.Size = new System.Drawing.Size(75, 23);
-            this.btnModif.TabIndex = 10;
-            this.btnModif.Text = "Modificar";
-            this.btnModif.UseVisualStyleBackColor = true;
-            this.btnModif.Click += new System.EventHandler(this.btnModif_Click);
-            // 
-            // btnElimin
-            // 
-            this.btnElimin.Location = new System.Drawing.Point(458, 237);
-            this.btnElimin.Name = "btnElimin";
-            this.btnElimin.Size = new System.Drawing.Size(75, 23);
-            this.btnElimin.TabIndex = 11;
-            this.btnElimin.Text = "Eliminar";
-            this.btnElimin.UseVisualStyleBackColor = true;
             // 
             // Nombre
             // 
@@ -361,6 +350,11 @@
             this.Sexo.HeaderText = "Sexo";
             this.Sexo.Name = "Sexo";
             // 
+            // Condicion
+            // 
+            this.Condicion.HeaderText = "Condicion";
+            this.Condicion.Name = "Condicion";
+            // 
             // Carrera
             // 
             this.Carrera.HeaderText = "Carrera";
@@ -371,11 +365,89 @@
             this.Legajo.HeaderText = "Legajo";
             this.Legajo.Name = "Legajo";
             // 
+            // btnModif
+            // 
+            this.btnModif.Location = new System.Drawing.Point(411, 237);
+            this.btnModif.Name = "btnModif";
+            this.btnModif.Size = new System.Drawing.Size(75, 23);
+            this.btnModif.TabIndex = 10;
+            this.btnModif.Text = "Modificar";
+            this.btnModif.UseVisualStyleBackColor = true;
+            this.btnModif.Click += new System.EventHandler(this.btnModif_Click);
+            // 
+            // btnElimin
+            // 
+            this.btnElimin.Location = new System.Drawing.Point(515, 237);
+            this.btnElimin.Name = "btnElimin";
+            this.btnElimin.Size = new System.Drawing.Size(75, 23);
+            this.btnElimin.TabIndex = 11;
+            this.btnElimin.Text = "Eliminar";
+            this.btnElimin.UseVisualStyleBackColor = true;
+            this.btnElimin.Click += new System.EventHandler(this.btnElimin_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.rbDoc);
+            this.groupBox2.Controls.Add(this.rbAlum);
+            this.groupBox2.Controls.Add(this.rbPers);
+            this.groupBox2.Location = new System.Drawing.Point(12, 189);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(213, 74);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(7, 18);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(81, 13);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Mostrar lista de:";
+            // 
+            // rbDoc
+            // 
+            this.rbDoc.AutoSize = true;
+            this.rbDoc.Location = new System.Drawing.Point(144, 48);
+            this.rbDoc.Name = "rbDoc";
+            this.rbDoc.Size = new System.Drawing.Size(71, 17);
+            this.rbDoc.TabIndex = 2;
+            this.rbDoc.TabStop = true;
+            this.rbDoc.Text = "Docentes";
+            this.rbDoc.UseVisualStyleBackColor = true;
+            this.rbDoc.CheckedChanged += new System.EventHandler(this.rbDoc_CheckedChanged);
+            // 
+            // rbAlum
+            // 
+            this.rbAlum.AutoSize = true;
+            this.rbAlum.Location = new System.Drawing.Point(77, 48);
+            this.rbAlum.Name = "rbAlum";
+            this.rbAlum.Size = new System.Drawing.Size(65, 17);
+            this.rbAlum.TabIndex = 1;
+            this.rbAlum.TabStop = true;
+            this.rbAlum.Text = "Alumnos";
+            this.rbAlum.UseVisualStyleBackColor = true;
+            this.rbAlum.CheckedChanged += new System.EventHandler(this.rbAlum_CheckedChanged);
+            // 
+            // rbPers
+            // 
+            this.rbPers.AutoSize = true;
+            this.rbPers.Location = new System.Drawing.Point(7, 48);
+            this.rbPers.Name = "rbPers";
+            this.rbPers.Size = new System.Drawing.Size(69, 17);
+            this.rbPers.TabIndex = 0;
+            this.rbPers.TabStop = true;
+            this.rbPers.Text = "Personas";
+            this.rbPers.UseVisualStyleBackColor = true;
+            this.rbPers.CheckedChanged += new System.EventHandler(this.rbPers_CheckedChanged);
+            // 
             // FormPersona
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 660);
+            this.ClientSize = new System.Drawing.Size(766, 610);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnElimin);
             this.Controls.Add(this.btnModif);
             this.Controls.Add(this.dgv);
@@ -399,6 +471,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -433,10 +507,16 @@
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.Button btnModif;
         private System.Windows.Forms.Button btnElimin;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RadioButton rbDoc;
+        private System.Windows.Forms.RadioButton rbAlum;
+        private System.Windows.Forms.RadioButton rbPers;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ndni;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaNac;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sexo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Condicion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Carrera;
         private System.Windows.Forms.DataGridViewTextBoxColumn Legajo;
     }

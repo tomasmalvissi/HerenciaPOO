@@ -22,6 +22,7 @@ namespace Datos
                                             + "'" + objalu.DNI + "',"
                                             + "'" + objalu.FechaNac + "',"
                                             + "'" + objalu.Sexo + "',"
+                                            + "' Alumno ',"
                                             + "'" + objalu.Carrera + "',"
                                             + "'" + objalu.Legajo + "'"
                                             + ");";

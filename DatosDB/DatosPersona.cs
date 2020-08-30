@@ -21,7 +21,8 @@ namespace Datos
                                    + "'" + objper.Nombre + "',"
                                    + "'" + objper.DNI + "',"
                                    + "'" + objper.FechaNac + "',"
-                                   + "'" + objper.Sexo + "'"
+                                   + "'" + objper.Sexo + "',"
+                                   + "' Persona '"
                                    + ");";
             }
             if (accion == "Modificar")

@@ -29,7 +29,15 @@ namespace Formularios
         {
             InitializeComponent();
         }
-
+        Persona pers = new Persona();
+        Alumno alum = new Alumno();
+        Docente doc = new Docente();
+        DatosPersona datper = new DatosPersona();
+        DatosAlumno datalu = new DatosAlumno();
+        DatosDocente datdoc = new DatosDocente();
+        NegPersonas negper = new NegPersonas();
+        NegAlumnos negalu = new NegAlumnos();
+        NegDocentes negdoc = new NegDocentes();
         #region Metodos
         private void CargarPersona() 
         {
@@ -54,18 +62,24 @@ namespace Formularios
                 DialogResult avisopersona = MessageBox.Show("¿Quiere cargar los datos de un Alumno o Docente?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (avisopersona == DialogResult.No)
                 {
-                    Persona pers = new Persona(Nom, DNI, FeNac, Sex);
-                    DatosPersona dpersona = new DatosPersona();
+                    pers.Nombre = Nom;
+                    pers.DNI = DNI;
+                    pers.FechaNac = FeNac;
+                    pers.Sexo = Sex;
                     string accion = "Alta";
-                    dpersona.ABMPer(accion, pers);
+                    datper.ABMPer(accion, pers);
                     //dgv.Rows.Add(pers.Nombre, pers.DNI, pers.FechaNac, pers.Sexo);
                     MessageBox.Show("Datos cargados con exito");
+                    DGVPersona();
                     txtNom.Text = "";
                     txtDNI.Text = "";
                 }
                 else if (avisopersona == DialogResult.Yes)
                 {
-                    Persona pers = new Persona(Nom, DNI, FeNac, Sex);
+                    pers.Nombre = Nom;
+                    pers.DNI = DNI;
+                    pers.FechaNac = FeNac;
+                    pers.Sexo = Sex;
                 }
             }
         }
@@ -74,29 +88,50 @@ namespace Formularios
             CarA = txtCarA.Text;
             LegA = Convert.ToInt64(txtLegA.Text);
 
-            Alumno alum = new Alumno(Nom, DNI, FeNac, Sex, CarA, LegA);
+            alum.Nombre = Nom;
+            alum.DNI = DNI;
+            alum.FechaNac = FeNac;
+            alum.Sexo = Sex;
+            alum.Carrera = CarA;
+            alum.Legajo = LegA;
             //dgv.Rows.Add(alum.Nombre, alum.DNI, alum.FechaNac, alum.Sexo, "Alumno", alum.Carrera, alum.Legajo);
-            DatosAlumno dalumno = new DatosAlumno();
             string accion = "Alta";
-            dalumno.ABMAlum(accion, alum);
+            datalu.ABMAlum(accion, alum);
 
         }
         private void CargarDocente()
         {
             CarD = txtCarD.Text;
             LegD = Convert.ToInt64(txtLegD.Text);
-            
-            Docente doc = new Docente(Nom, DNI, FeNac, Sex, CarD, LegD);
+
+            doc.Nombre = Nom;
+            doc.DNI = DNI;
+            doc.FechaNac = FeNac;
+            doc.Sexo = Sex;
+            doc.Carrera = CarD;
+            doc.Legajo = LegD;
             //dgv.Rows.Add(doc.Nombre, doc.DNI, doc.FechaNac, doc.Sexo, "Docente", doc.Carrera, doc.Legajo);
-            DatosDocente ddocente = new DatosDocente();
             string accion = "Alta";
-            ddocente.ABMDoc(accion, doc);
+            datdoc.ABMDoc(accion, doc);
         }
         private void Rellenar()
         {
             txtNom.Text = dgv.CurrentRow.Cells[0].Value.ToString();
             txtDNI.Text = dgv.CurrentRow.Cells[1].Value.ToString();
+            string sexoif = dgv.CurrentRow.Cells[3].Value.ToString();
             dtFechaNac.Value = Convert.ToDateTime(dgv.CurrentRow.Cells[2].Value.ToString());
+            if (sexoif == "F")
+            {
+                rbFem.Checked = true;
+            }
+            else if (sexoif == "M")
+            {
+                rbMas.Checked = true;
+            }
+            else if (sexoif == "O")
+            {
+                rbOtro.Checked = true;
+            }
             string condicion = dgv.CurrentRow.Cells[4].Value.ToString();
             if (condicion == "Alumno")
             {
@@ -117,13 +152,12 @@ namespace Formularios
         {
             dgv.Rows.Clear();
             DataSet ds = new DataSet();
-            NegPersonas negper = new NegPersonas();
             ds = negper.listadoper("Todos");
             if (ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-                    dgv.Rows.Add(dr[0], dr[1], dr[2], dr[3]);
+                    dgv.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4]);
                 }
             }
         }
@@ -131,14 +165,12 @@ namespace Formularios
         {
             dgv.Rows.Clear();
             DataSet ds = new DataSet();
-            NegAlumnos negalu = new NegAlumnos();
             ds = negalu.listadoalu("Todos");
             if (ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-                    dgv.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5]);
-                    dgv.Rows[6].Cells[6].Value = "Alumno";
+                    dgv.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
                 }
             }
         }
@@ -146,14 +178,12 @@ namespace Formularios
         {
             dgv.Rows.Clear();
             DataSet ds = new DataSet();
-            NegDocentes negdoc = new NegDocentes();
             ds = negdoc.listadodoc("Todos");
             if (ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {
-                    dgv.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5]);
-                    //dgv.Rows.Add(dr[6] = "Docente");
+                    dgv.Rows.Add(dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
                 }
             }
         }
@@ -179,7 +209,6 @@ namespace Formularios
             else
             {
                 CargarPersona();
-                DGVPersona();
             }
         }
 
@@ -220,19 +249,70 @@ namespace Formularios
         }
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (Sex == 'F')
-            {
-                rbFem.Checked = true;
-            }
-            else if (Sex == 'M')
-            {
-                rbMas.Checked = true;
-            }
-            else if (Sex == 'O')
-            {
-                rbOtro.Checked = true;
-            }
             Rellenar();
+        }
+        private void btnModif_Click(object sender, EventArgs e)
+        {
+            if (txtNom.Text == "" && txtDNI.Text == "" && txtCarD.Text == "" && txtLegD.Text == "" && txtCarA.Text == "" && txtLegA.Text == "")
+            {
+                MessageBox.Show("Complete todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (!rbFem.Checked && !rbMas.Checked && !rbOtro.Checked)
+            {
+                MessageBox.Show("Debe seleccionar una opcion", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                if (dgv.CurrentRow.Cells[4].Value.ToString() == "Alumno")
+                {
+                    string accion = "Modificar";
+                    datalu.ABMAlum(accion, alum);
+                }
+                else if (dgv.CurrentRow.Cells[4].Value.ToString() == "Docente")
+                {
+                    string accion = "Modificar";
+                    datdoc.ABMDoc(accion, doc);
+                }
+                else
+                {
+                    string accion = "Modificar";
+                    datper.ABMPer(accion, pers);
+                }
+            }
+        }
+
+        private void rbPers_CheckedChanged(object sender, EventArgs e)
+        {
+            DGVPersona();
+        }
+
+        private void rbAlum_CheckedChanged(object sender, EventArgs e)
+        {
+            DGVAlumno();
+        }
+
+        private void rbDoc_CheckedChanged(object sender, EventArgs e)
+        {
+            DGVDocente();
+        }
+
+        private void btnElimin_Click(object sender, EventArgs e)
+        {
+            if (dgv.CurrentRow.Cells[4].Value.ToString() == "Alumno")
+            {
+                string accion = "Eliminar";
+                datalu.ABMAlum(accion, alum);
+            }
+            else if (dgv.CurrentRow.Cells[4].Value.ToString() == "Docente")
+            {
+                string accion = "Eliminar";
+                datdoc.ABMDoc(accion, doc);
+            }
+            else
+            {
+                string accion = "Eliminar";
+                datper.ABMPer(accion, pers);
+            }
         }
         #endregion
         #region validation
@@ -303,23 +383,5 @@ namespace Formularios
         }
 
         #endregion
-
-        private void btnModif_Click(object sender, EventArgs e)
-        {
-            if (txtNom.Text == "" && txtDNI.Text == "" && txtCarD.Text == "" && txtLegD.Text == "" && txtCarA.Text == "" && txtLegA.Text == "")
-            {
-                MessageBox.Show("Complete todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else if (!rbFem.Checked && !rbMas.Checked && !rbOtro.Checked)
-            {
-                MessageBox.Show("Debe seleccionar una opcion", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                //DatosAlumno dalumno = new DatosAlumno();
-                //string accion = "Alta";
-                //dalumno.ABMAlum(accion, alum);
-            }
-        }
     }
 }
