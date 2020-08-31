@@ -94,12 +94,12 @@
             // dtFechaNac
             // 
             this.dtFechaNac.CustomFormat = "DD/MM/YYYY";
-            this.dtFechaNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFechaNac.Location = new System.Drawing.Point(14, 122);
+            this.dtFechaNac.MaxDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
             this.dtFechaNac.Name = "dtFechaNac";
             this.dtFechaNac.Size = new System.Drawing.Size(200, 20);
             this.dtFechaNac.TabIndex = 2;
-            this.dtFechaNac.Value = new System.DateTime(2020, 8, 27, 15, 36, 53, 0);
+            this.dtFechaNac.Value = new System.DateTime(2020, 8, 31, 0, 0, 0, 0);
             // 
             // groupBox1
             // 
