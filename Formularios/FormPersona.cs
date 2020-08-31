@@ -249,8 +249,27 @@ namespace Formularios
         }
         private void btnModif_Click(object sender, EventArgs e)
         {
+            Nom = txtNom.Text;
+            DNI = Convert.ToInt64(txtDNI.Text);
+            FeNac = dtFechaNac.Value;
+            Sex = 'N';
+            if (rbFem.Checked == true)
+            {
+                Sex = 'F';
+            }
+            else if (rbMas.Checked == true)
+            {
+                Sex = 'M';
+            }
+            else if (rbOtro.Checked == true)
+            {
+                Sex = 'O';
+            }
             if (dgv.CurrentRow.Cells[4].Value.ToString() == "Alumno")
             {
+               
+                CarA = txtCarA.Text;
+                LegA = Convert.ToInt64(txtLegA.Text);
                 string accion = "Modificar";
                 alum.Nombre = Nom;
                 alum.DNI = DNI;
@@ -259,9 +278,12 @@ namespace Formularios
                 alum.Carrera = CarD;
                 alum.Legajo = LegD;
                 datalu.ABMAlum(accion, alum);
+                DGVAlumno();
             }
-            if (dgv.CurrentRow.Cells[4].Value.ToString() == "Docente")
+            else if (dgv.CurrentRow.Cells[4].Value.ToString() == "Docente")
             {
+                CarD = txtCarD.Text;
+                LegD = Convert.ToInt64(txtLegD.Text);
                 string accion = "Modificar";
                 doc.Nombre = Nom;
                 doc.DNI = DNI;
@@ -270,6 +292,7 @@ namespace Formularios
                 doc.Carrera = CarD;
                 doc.Legajo = LegD;
                 datdoc.ABMDoc(accion, doc);
+                DGVDocente();
             }
             else
             {
@@ -279,25 +302,33 @@ namespace Formularios
                 pers.FechaNac = FeNac;
                 pers.Sexo = Sex;
                 datper.ABMPer(accion, pers);
+                DGVPersona();
             }
         }
 
         private void btnElimin_Click(object sender, EventArgs e)
         {
-            if (dgv.CurrentRow.Cells[4].Value.ToString() == "Alumno")
+            DialogResult avisoelimina = MessageBox.Show("¿Quiere eliminar el registro seleccionado?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            if (avisoelimina == DialogResult.Yes)
             {
-                string accion = "Eliminar";
-                datalu.ABMAlum(accion, alum);
-            }
-            if (dgv.CurrentRow.Cells[4].Value.ToString() == "Docente")
-            {
-                string accion = "Eliminar";
-                datdoc.ABMDoc(accion, doc);
-            }
-            else
-            {
-                string accion = "Eliminar";
-                datper.ABMPer(accion, pers);
+                if (dgv.CurrentRow.Cells[4].Value.ToString() == "Alumno")
+                {
+                    string accion = "Eliminar";
+                    datalu.ABMAlum(accion, alum);
+                    DGVAlumno();
+                }
+                else if (dgv.CurrentRow.Cells[4].Value.ToString() == "Docente")
+                {
+                    string accion = "Eliminar";
+                    datdoc.ABMDoc(accion, doc);
+                    DGVDocente();
+                }
+                else
+                {
+                    string accion = "Eliminar";
+                    datper.ABMPer(accion, pers);
+                    DGVPersona();
+                }
             }
         }
         private void rbPers_CheckedChanged(object sender, EventArgs e)
