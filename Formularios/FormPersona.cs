@@ -249,31 +249,36 @@ namespace Formularios
         }
         private void btnModif_Click(object sender, EventArgs e)
         {
-            if (txtNom.Text == "" && txtDNI.Text == "" && txtCarD.Text == "" && txtLegD.Text == "" && txtCarA.Text == "" && txtLegA.Text == "")
+            if (dgv.CurrentRow.Cells[4].Value.ToString() == "Alumno")
             {
-                MessageBox.Show("Complete todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                string accion = "Modificar";
+                alum.Nombre = Nom;
+                alum.DNI = DNI;
+                alum.FechaNac = FeNac;
+                alum.Sexo = Sex;
+                alum.Carrera = CarD;
+                alum.Legajo = LegD;
+                datalu.ABMAlum(accion, alum);
             }
-            else if (!rbFem.Checked && !rbMas.Checked && !rbOtro.Checked)
+            if (dgv.CurrentRow.Cells[4].Value.ToString() == "Docente")
             {
-                MessageBox.Show("Debe seleccionar una opcion", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                string accion = "Modificar";
+                doc.Nombre = Nom;
+                doc.DNI = DNI;
+                doc.FechaNac = FeNac;
+                doc.Sexo = Sex;
+                doc.Carrera = CarD;
+                doc.Legajo = LegD;
+                datdoc.ABMDoc(accion, doc);
             }
             else
             {
-                if (dgv.CurrentRow.Cells[4].Value.ToString() == "Alumno")
-                {
-                    string accion = "Modificar";
-                    datalu.ABMAlum(accion, alum);
-                }
-                else if (dgv.CurrentRow.Cells[4].Value.ToString() == "Docente")
-                {
-                    string accion = "Modificar";
-                    datdoc.ABMDoc(accion, doc);
-                }
-                else
-                {
-                    string accion = "Modificar";
-                    datper.ABMPer(accion, pers);
-                }
+                string accion = "Modificar";
+                pers.Nombre = Nom;
+                pers.DNI = DNI;
+                pers.FechaNac = FeNac;
+                pers.Sexo = Sex;
+                datper.ABMPer(accion, pers);
             }
         }
 
@@ -284,7 +289,7 @@ namespace Formularios
                 string accion = "Eliminar";
                 datalu.ABMAlum(accion, alum);
             }
-            else if (dgv.CurrentRow.Cells[4].Value.ToString() == "Docente")
+            if (dgv.CurrentRow.Cells[4].Value.ToString() == "Docente")
             {
                 string accion = "Eliminar";
                 datdoc.ABMDoc(accion, doc);
